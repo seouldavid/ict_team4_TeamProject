@@ -14,7 +14,7 @@
 
 	<!-- 자유게시판 총 게시글 수 -->
 	<select id="freeboard_count" resultType="int">
-    SELECT COUNT(*) FROM tb_bbs WHERE bbs_id = 'FREE'
+    SELECT COUNT(*) FROM tb_bbs WHERE wr_active = 0 AND bbs_id = 'FREE'
 	</select>
 	
 	<!-- 자유게시판 게시글 리스트 -->
@@ -37,13 +37,14 @@
 
 	<!-- 자유게시판 글삭제-->
   	<update id="freeboard_delete" parameterType="String">
-    	update tb_bbs set wr_active = 1 where wr_id = #{wr_id}
+    	update tb_bbs set wr_active = 1,
+       upd_dt = now(), crt_dt = now() where wr_id = #{wr_id}
     </update>
     
     
     <!-- 상담내역 총 게시글 수 -->
 	<select id="consultation_count" resultType="int">
-    SELECT COUNT(*) FROM tb_bbs WHERE bbs_id = 'CONS'
+    SELECT COUNT(*) FROM tb_bbs WHERE wr_active = 0 AND bbs_id = 'CONS'
 	</select>
     
   	<!-- 상담내역 게시글 리스트 -->
@@ -74,13 +75,14 @@
     
     <!-- 상담내역 삭제-->
   	<update id="consultation_delete" parameterType="String">
-    	update tb_bbs set wr_active = 1 where wr_id = #{wr_id}
+    	update tb_bbs set wr_active = 1,
+       upd_dt = now(), crt_dt = now() where wr_id = #{wr_id}
     </update>
     
  
      <!-- 문의내역 총 게시글 수 -->
 	<select id="questions_count" resultType="int">
-    SELECT COUNT(*) FROM tb_bbs WHERE bbs_id = 'INQU'
+    SELECT COUNT(*) FROM tb_bbs WHERE wr_active = 0 AND bbs_id = 'INQU'
 	</select>
        	<!-- 문의내역 게시글 리스트 -->
  	<select id="questions_list" parameterType="Map" resultType="com.ict.healim.vo.BoardVO">
@@ -97,12 +99,13 @@
     
     <!-- 문의내역 삭제-->
   	<update id="questions_delete" parameterType="String">
-    	update tb_bbs set wr_active = 1 where wr_id = #{wr_id}
+    	update tb_bbs set wr_active = 1,
+       upd_dt = now(), crt_dt = now() where wr_id = #{wr_id}
     </update>
    
      <!-- 공지사항 총 게시글 수 -->
 	<select id="notice_count" resultType="int">
-    SELECT COUNT(*) FROM tb_bbs WHERE bbs_id = 'NOTI'
+    SELECT COUNT(*) FROM tb_bbs WHERE wr_active = 0 AND bbs_id = 'NOTI'
 	</select>
        	<!-- 공지사항 게시글 리스트 -->
  	<select id="notice_list" parameterType="Map" resultType="com.ict.healim.vo.BoardVO">
@@ -129,7 +132,8 @@
     
     <!-- 공지사항 삭제-->
   	<update id="notice_delete" parameterType="String">
-    	update tb_bbs set wr_active = 1 where wr_id = #{wr_id}
+    	update tb_bbs set wr_active = 1,
+       upd_dt = now(), crt_dt = now() where wr_id = #{wr_id}
     </update>
    
    <!-- 공지사항 수정  -->
@@ -167,7 +171,7 @@
 	    SELECT * FROM tb_bbs 
 	    WHERE wr_active = 1 
 	    AND bbs_id != 'REVIEW'
- 	    ORDER BY start_dt DESC 
+ 	    ORDER BY crt_dt DESC 
 	    LIMIT #{limit} OFFSET #{offset}
 	</select> 
 	
@@ -196,7 +200,10 @@
    
    <!-- 신고 게시물 삭제-->
      <update id="issue_delete" parameterType="String">
-       update tb_bbs set wr_active = 1 where wr_id = #{wr_id}
+       update tb_bbs 
+       set wr_active = 1,
+       upd_dt = now(), crt_dt = now()
+        where wr_id = #{wr_id}
     </update>
 	
 	<select id="board_select_one" parameterType="String" resultType="com.ict.healim.vo.BoardVO">

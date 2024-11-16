@@ -287,7 +287,7 @@ $(document).ready(function() {
                                 "<td>" + boardSleepName + "</td>" +
                                 "<td>" + admin_board_sleep.mber_nm + "</td>" +
                                 "<td>" + admin_board_sleep.wr_subject + "</td>" +
-                                "<td>" + admin_board_sleep.upd_dt + "</td>" +
+                                "<td>" + admin_board_sleep.crt_dt + "</td>" +
                             "</tr>";
                     });
                     $("#boardSleepListContainer").html(boardSleepListHtml);
