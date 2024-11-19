@@ -173,7 +173,7 @@ img {
 				<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.3/kakao.min.js"
   integrity="sha384-kLbo2SvoNtOFiniJ1EQ9o2iDA8i3xp+O6Cns+L5cd4RsOJfl+43z5pvieT2ayq3C" crossorigin="anonymous"></script>
 <script>
-  Kakao.init('4fddea55ecc952817c8d02fc03359a68'); // 사용하려는 앱의 JavaScript 키 입력
+  Kakao.init('6f548e1d389e3b8ae5804cac96623033'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 
 <a id="kakaotalk-sharing-btn" href="javascript:;">
